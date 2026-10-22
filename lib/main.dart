@@ -1,90 +1,47 @@
-
 import 'package:flutter/material.dart';
+import 'theme.dart';
 
-void main() {
-  runApp(const MyApp());
+void main(){
+  runApp(MyApp());
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class MyApp extends StatelessWidget{
+  const MyApp({Key? key}) : super(key: key);
+ 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
-          title: const Text('My App'),
+          title: Text('My App'),
         ),
-        body: Column(
+        body: Center(
+          child: Container(
+          width: 200,
+          child:  Column (
+          mainAxisAlignment: MainAxisAlignment.center,
+         // crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  color: Colors.blue,
-                  height: 100,
-                  width: 60,
-                ),
-                Container(
-                  color: Colors.red,
-                  height: 100,
-                  width: 60,
-                ),
-                Container(
-                  color: Colors.green,
-                  height: 100,
-                  width: 60,
-                ),
-                Container(
-                  color: Colors.pink,
-                  height: 100,
-                  width: 60,
-                ),
-                Container(
-                  color: Colors.purple,
-                  height: 100,
-                  width: 60,
-                ),
-              ],
+            TextField(
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder()
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  color: Colors.blue,
-                  height: 100,
-                  width: 60,
-                ),
-                Container(
-                  color: Colors.red,
-                  height: 100,
-                  width: 60,
-                ),
-                Container(
-                  color: Colors.green,
-                  height: 100,
-                  width: 60,
-                ),
-                Container(
-                  color: Colors.pink,
-                  height: 100,
-                  width: 60,
-                ),
-                Container(
-                  color: Colors.purple,
-                  height: 100,
-                  width: 60,
-                ),
-              ],
+            SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder()
+              ),
             ),
+             SizedBox(height: 10),
+            ElevatedButton(onPressed: (){}, child: Text('Login'))
           ],
         ),
-      ),
+        ),
+        )
+      )
     );
+          
+         
   }
 }
-
-
-
