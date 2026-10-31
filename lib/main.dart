@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tour/chat.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool showPassward = true;
+  bool showPassword = true;
 
   final passwordController = TextEditingController();
 
@@ -26,97 +27,82 @@ class _MyAppState extends State<MyApp> {
     "Eman Fatima",
     "Iman Fatima",
     "Rabia Islam",
+    "Areeba Shahbaz",
   ];
-
-  @override
-  void dispose() {
-    passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Whatsapp"),
           backgroundColor: Colors.greenAccent,
         ),
+body: Column(
+  children: [
+    Padding(
+      padding: const EdgeInsets.all(6.0),
+      child: TextField(
+        decoration: InputDecoration(
+          prefixIcon: Icon(Icons.search),
+          hintText: 'Search Here',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(100.0)
+      
+          )
+        )
+      ),
+    ),
+  Row(
+    children: [
+      TextButton(onPressed:(){}, child: Text("unread")),
+      TextButton(onPressed:(){}, child: Text("All")),
+      TextButton(onPressed:(){}, child: Text("Favotrites")),
+      TextButton(onPressed:(){}, child: Text("Groups")),
+      TextButton(onPressed:(){}, child: Text("Communities")),
 
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.search),
-                  hintText: 'Search Here',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(100.0),
-                  ),
-                ),
-              ),
-            ),
 
-            TextButton(
-              onPressed: () {},
-              child: const Text("Unread"),
-            ),
 
-            Expanded(
-              child: ListView.builder(
-                itemCount: students.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      ListTile(
-                        onTap: () {
-                          Get.to(
-                            () => ChatHistory(
-                              name: students[index],
-                              n: index,
-                            ),
-                          );
-                        },
 
-                        leading: const CircleAvatar(
-                          child: Icon(Icons.person),
-                        ),
-
-                        title: Text(students[index]),
-
-                        subtitle: const Text(
-                          "Hello, how are you?",
-                        ),
-
-                        trailing: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text("10:00 am"),
-
-                            const SizedBox(height: 4),
-
-                            const CircleAvatar(
-                              radius: 10,
-                              backgroundColor: Colors.green,
-                              child: Text(
-                                '1',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      const Divider(
-                        height: 1,
-                        thickness: 0.5,
-                        color: Colors.grey,
-                      ),
+    ],
+  ),
+     Expanded(
+       child: ListView.builder(
+        itemCount: students.length,
+          itemBuilder: (context, index) {
+           return Column(
+             children: [
+              ListTile(
+                onTap: ()
+                {
+                  print(index);
+                  Get.to(ChatHistory(name: students[index] , n: index
+                  )
+               );
+            },
+      title: Text(students[index]),
+       subtitle: const Text("Hello How are you"),
+         trailing: Column(
+           children: [
+            const Text("10:00 am"),
+              CircleAvatar(
+                radius:10,
+                backgroundColor: Colors.green,
+                  child: Text("1",
+                    style: TextStyle(
+                     color: Colors.white,
+                     fontSize: 12,
+    
+            ))
+          ),
+        ],
+      ),
+    ),
+    Divider(
+      height:1,
+      thickness: 0.5,
+      color:Colors.grey,
+                      )
                     ],
                   );
                 },
@@ -124,12 +110,9 @@ class _MyAppState extends State<MyApp> {
             ),
           ],
         ),
-
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(Icons.chat),
+        floatingActionButton: FloatingActionButton(onPressed: (){}, child:Icon(Icons.chat)),
         ),
-      ),
-    );
+      );
+    
   }
 }
